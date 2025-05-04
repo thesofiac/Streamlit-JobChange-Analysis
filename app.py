@@ -100,7 +100,7 @@ pipeline = joblib.load('final_model.pkl')
 df_train = pd.read_csv('aug_train.csv')
 
 # Processar
-features, labels, enrollee_id = treat_columns(df_train)
+features, labels, enrollee_ids = treat_columns(df_train)
 probs = pipeline.predict_proba(features)[:, 1]
 
 # Juntar resultado
