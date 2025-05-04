@@ -93,25 +93,25 @@ def treat_columns(df_train):
     features = df.drop(columns=['target', 'city', 'enrollee_id']).astype(float)
     labels = df['target']
 
-    return features, labels, enrollee_id
+    return features, labels
 
 # Carregar modelo e dados
 pipeline = joblib.load('final_model.pkl')
 df_train = pd.read_csv('aug_train.csv')
 
 # Processar
-features, labels, enrollee_ids = treat_columns(df_train)
+features, labels = treat_columns(df_train)
 probs = pipeline.predict_proba(features)[:, 1]
 
 # Juntar resultado
-resultados = pd.DataFrame({
-    'enrollee_id': enrollee_ids.values,
-    'probabilidade_target_1': probs
-})
+#resultados = pd.DataFrame({
+#    'enrollee_id': enrollee_ids.values,
+#    'probabilidade_target_1': probs
+#})
 
 # Ordenar
-top_10 = resultados.sort_values(by='probabilidade_target_1', ascending=False).head(10)
-bottom_10 = resultados.sort_values(by='probabilidade_target_1', ascending=True).head(10)
+#top_10 = resultados.sort_values(by='probabilidade_target_1', ascending=False).head(10)
+#bottom_10 = resultados.sort_values(by='probabilidade_target_1', ascending=True).head(10)
 
 # Mostrar
 #st.subheader("🔝 Top 10 com mais probabilidade de ser 1:")
