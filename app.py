@@ -125,6 +125,7 @@ resultados = pd.DataFrame({
 })
 
 st.title("Classificador Binário")
+st.set_page_config(layout="wide")
 
 menu = st.sidebar.selectbox("Escolha uma opção", [
     "Entenda os dados",
@@ -208,7 +209,6 @@ company_size_options = list(dic_company_size.keys())
 
 if menu == "Entenda os dados":
     st.subheader("Entenda os dados")
-    st.set_page_config(layout="wide")
     st.title("As intenções dos candidatos")
 
     st.markdown("### Cerca de <span style='color:#E07A5F;'>25%</span> dos candidatos estão em busca de um novo emprego")
