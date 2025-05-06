@@ -260,11 +260,11 @@ elif menu == "Busque um candidato por seu ID":
 
 elif menu == "Veja quais são os candidatos mais prováveis a mudar de emprego":
     st.subheader("Os candidatos mais e menos prováveis de mudar de emprego")
-    top_10 = resultados.nlargest(10, 'Probabilidade')[['ID candidato', 'Probabilidade']]
-    bottom_10 = resultados.nsmallest(10, 'Probabilidade')[['ID candidato', 'Probabilidade']]
-
+    top_10['Probabilidade (%)'] = (top_10['Probabilidade'] * 100).round(0).astype(int).astype(str) + '%'
+    bottom_10['Probabilidade (%)'] = (bottom_10['Probabilidade'] * 100).round(0).astype(int).astype(str) + '%'
+    
     st.write("Os candidatos mais prováveis")
-    st.dataframe(top_10.reset_index(drop=True))
+    st.dataframe(top_10[['ID candidato', 'Probabilidade (%)']].reset_index(drop=True))
 
     st.write("Os candidatos menos prováveis")
-    st.dataframe(bottom_10.reset_index(drop=True))
+    st.dataframe(bottom_10[['ID candidato', 'Probabilidade (%)']].reset_index(drop=True))
