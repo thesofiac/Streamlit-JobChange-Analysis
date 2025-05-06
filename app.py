@@ -1,5 +1,6 @@
 import joblib
 import pandas as pd
+import matplotlib as plt
 import streamlit as st
 from category_encoders import TargetEncoder
 from sklearn.preprocessing import StandardScaler
