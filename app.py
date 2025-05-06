@@ -266,8 +266,8 @@ elif menu == "Veja quais são os candidatos mais prováveis a mudar de emprego":
     bottom_10 = resultados.nsmallest(10, 'Probabilidade')[['ID candidato', 'Probabilidade']]
 
     # Formatação das probabilidades como porcentagem
-    top_10['Probabilidade (%)'] = (top_10['Probabilidade'] * 100).round(0).astype(int).astype(str) + '%'
-    bottom_10['Probabilidade (%)'] = (bottom_10['Probabilidade'] * 100).round(0).astype(int).astype(str) + '%'
+    top_10['Probabilidade (%)'] = (top_10['Probabilidade'] * 100).round(0).astype(int).astype(str)
+    bottom_10['Probabilidade (%)'] = (bottom_10['Probabilidade'] * 100).round(0).astype(int).astype(str)
 
     st.write("Os candidatos mais prováveis")
     st.dataframe(top_10[['ID candidato', 'Probabilidade (%)']].reset_index(drop=True))
