@@ -235,6 +235,14 @@ if menu == "Entenda os dados":
     ax.grid(False)
     fig.tight_layout()
 
+    # Adicionar os valores acima de cada ponto
+    for i in range(len(df1)):
+        ax.annotate(f"{df1['y'][i]:.1f}%",  # valor com 1 casa decimal + símbolo de %
+                (df1['x'][i], df1['y'][i]),  # posição (x, y)
+                textcoords="offset points",  # colocar o texto "fora" do ponto
+                xytext=(0, 8),  # deslocar o texto 8px pra cima
+                ha='center', color='#444')  # alinhamento horizontal e cor do texto
+    
     # Exibir no Streamlit
     st.pyplot(fig)
 
