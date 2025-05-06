@@ -1,0 +1,180 @@
+import joblib
+import pandas as pd
+import streamlit as st
+from category_encoders import TargetEncoder
+from sklearn.preprocessing import StandardScaler
+
+def treat_columns(df_train):
+    df = df_train.copy()
+
+    # Salvar o ID (enrollee_id) antes de qualquer transformação
+    enrollee_id = df['enrollee_id']
+
+    # city: retirar o "city" do ID da cidade
+    df['city'] = df['city'].str.extract(r'city_(\d+)').astype(int)
+
+    # relevent_experience: transformar em binário
+    df['relevent_experience'] = df['relevent_experience'].replace({
+        'Has relevent experience': 1,
+        'No relevent experience': 0
+        }).astype('Int64')
+
+    # enrolled_university: transformar em ordinal
+    df['enrolled_university'] = df['enrolled_university'].replace({
+        'no_enrollment': 0,
+        'Part time course': 1,
+        'Full time course': 2
+        }).astype('Int64')
+
+    # education_level: transformar em ordinal
+    df['education_level'] = df['education_level'].replace({
+        'Primary School' : 0,
+        'High School' : 1,
+        'Graduate' : 2,
+        'Masters' : 3,
+        'Phd' : 4
+        }).astype('Int64')
+
+    # experience: transformar em numérico
+    df['experience'] = df['experience'].str.extract(r'(\d+)').astype('Int64')
+
+    # company_size: transformar em numérico
+    df['company_size'] = df['company_size'].replace({
+        '<10': 0,
+        '10/49': 1,
+        '50-99': 2,
+        '100-500': 3,
+        '500-999' : 4,
+        '1000-4999': 5,
+        '5000-9999': 6,
+        '10000+': 7
+        }).astype('Int64')
+
+    # last_new_job: transformar em numérico
+    df['last_new_job'] = pd.to_numeric(df['last_new_job'].replace({'never': 0, '>4': 5}), errors='coerce').astype('Int64')
+
+    # Preencher nulos
+    moda_cols = ['gender', 'enrolled_university', 'education_level', 'major_discipline', 'company_size', 'company_type']
+    for col in moda_cols:
+        moda = df[col].mode().iloc[0]
+        df[col] = df[col].fillna(moda)
+
+    median_cols = ['experience', 'last_new_job']
+    for col in median_cols:
+        mediana = df[col].median()
+        df[col] = df[col].fillna(mediana)
+
+    # GetDummies
+    for col in ['gender', 'major_discipline', 'company_type']:
+        df = pd.get_dummies(df, columns=[col], drop_first=True)
+
+    # TargetEncoder para city
+    te = TargetEncoder(cols=['city'])
+    te.fit(df, df['target'])  # usando o target para o fit
+    df['city_target_encoded'] = te.transform(df)['city']
+
+    # Tratar outliers de training_hours
+    Q1 = df['training_hours'].quantile(0.25)
+    Q3 = df['training_hours'].quantile(0.75)
+    IQR = Q3 - Q1
+    lower_bound = Q1 - 1 * IQR
+    upper_bound = Q3 + 1 * IQR
+    mask = (df['training_hours'] >= lower_bound) & (df['training_hours'] <= upper_bound)
+    df = df[mask]  # importante: mantém consistência
+
+    # Atualiza enrollee_id depois de remover outliers
+    enrollee_id = df['enrollee_id']
+
+    # Escalar numéricos
+    numeric = ['experience', 'last_new_job', 'training_hours', 'city_target_encoded']
+    scaler = StandardScaler()
+    df[numeric] = scaler.fit_transform(df[numeric])
+
+    features = df.drop(columns=['target', 'city', 'enrollee_id']).astype(float)
+    labels = df['target']
+
+    return features, labels, enrollee_id
+
+# Carregar modelo e dados
+pipeline = joblib.load('final_model.pkl')
+df_train = pd.read_csv('aug_train.csv')
+
+# Processar
+features, labels, enrollee_ids = treat_columns(df_train)
+probs = pipeline.predict_proba(features)[:, 1]
+
+# Juntar resultado
+resultados = pd.DataFrame({
+    'enrollee_id': enrollee_ids.values,
+    'probability': probs
+})
+
+st.title("Classificador Binário")
+
+menu = st.sidebar.selectbox("Escolha uma opção", [
+    "Entenda os dados",
+    "Preveja se um candidato está em busca de emprego",
+    "Busque um candidato por seu ID",
+    "Veja quais são os candidatos mais prováveis a mudar de emprego"
+])
+
+gender_options = ['Feminino', 'Masculino', 'Outros']
+scholarity_options = ['Ensino Fundamental', 'Ensino Médio', 'Graduação', 'Mestrado', 'Doutorado']
+major_options = ['Negócios', 'Artes', 'Humanas', 'Ciência e Tecnologia', 'Sem Formação', 'Outros']
+relevant_experience = ['Sim', 'Não']
+lastjob_options = ['Nunca trabalhou', '1 ano', '2 anos', '3 anos', '4 anos', 'Acima de 4 anos']
+course_options = ['Curso em Tempo Integral', 'Curso em Meio Período', 'Não realizou curso']
+IDH_options = ['0 - 0.25', '0.25 - 0.50', '0.50 - 0.75', '0.75 - 1.00']
+company_options = ['Empresa Privada', 'Empresa Pública', 'Startup', 'Startup em Estágio Inicial', 'ONG', 'Outros']
+company_size_options = ['Até 10 funcionários',  'De 10 a 49 funcionários', 'De 50 a 99 funcionários', 'De 100 a 500 funcionários', 'De 500 a 999 funcionários', 'De 1000 a 4999 funcionários', 'De 5000 a 9999 funcionários', 'Mais de 10000 funcionários']
+
+if menu == "Entenda os dados":
+    st.subheader("Entenda os dados")
+
+elif menu == "Preveja se um candidato está em busca de emprego":
+    st.subheader("Adicione as informações do candidato e da empresa")
+
+    f1 = st.selectbox("Gênero", gender_options)
+    f2 = st.selectbox("Escolaridade", scholarity_options)
+    f3 = st.selectbox("Área de Formação", major_options)
+    f4 = st.number_input("Anos de Experiência", value=0.0)
+    f5 = st.selectbox("Já teve Experiência na Área?", relevant_experience)
+    f6 = st.selectbox("Quantos anos desde o último emprego?", lastjob_options)
+    f7 = st.selectbox("Qual o período do curso realizado?", course_options)
+    f8 = st.number_input("Quantas horas de treinamento realizadas?", value=0.0)
+
+    f9 = st.number_input("Códido da Cidade da Empresa (city_1 a city_180)", value=0.0)
+    f10 = st.selectbox("IDH da Cidade", IDH_options)
+    f11 = st.selectbox("Tipo da Empresa", company_options)
+    f12 = st.selectbox("Tamaho da Empresa", company_size_options)
+
+    f13 = '0'
+    f14 = '0'
+
+    if st.button("Prever"):
+        input_df = pd.DataFrame([[f13, f9, f10, f1, f5, f7, f2, f3, f4, f12, f11, f6, f8, f14]], columns=['enrollee_id', 'city', 'city_development_index', 'gender', 'relevent_experience', 'enrolled_university', 'education_level', 'major_discipline', 'experience', 'company_size', 'company_type', 'last_new_job', 'training_hours', 'target'])
+        prediction = pipeline.predict(input_df)[0]
+        prob = pipeline.predict_proba(input_df)[0, 1]
+        st.write(f"Previsão: {prediction} (Probabilidade de 1: {prob:.2f})")
+
+elif menu == "Busque um candidato por seu ID":
+    st.subheader("Buscar dados por ID")
+    id_input = st.text_input("Digite o ID (de 1 a 33380)")
+
+    if st.button("Buscar"):
+        prob = resultados[resultados['enrollee_id'] == id_input]['probability'].values[0]
+        if not result.empty:
+            st.writ(f"O candidato de ID {id_input} tem {prob*100} de chance de estar buscando um novo emprego")
+        else:
+            st.write("ID não encontrado.")
+
+elif menu == "Veja quais são os candidatos mais prováveis a mudar de emprego":
+    st.subheader("Os candidatos mais e menos prováveis de mudar de emprego")
+    top_10 = resultados.nlargest(10, 'probability')[['enrollee_id', 'probability']]
+    bottom_10 = resultados.nsmallest(10, 'probability')[['enrollee_id', 'probability']]
+
+    st.write("Os candidatos mais prováveis")
+    st.dataframe(top_10.reset_index(drop=True))
+
+    st.write("Os candidatos menos prováveis")
+    st.dataframe(bottom_10.reset_index(drop=True))
