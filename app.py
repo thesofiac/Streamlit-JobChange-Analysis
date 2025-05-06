@@ -124,8 +124,8 @@ resultados = pd.DataFrame({
     'Probabilidade': probs
 })
 
-st.title("Classificador Binário")
 st.set_page_config(layout="wide")
+st.title("Classificador Binário")
 
 menu = st.sidebar.selectbox("Escolha uma opção", [
     "Entenda os dados",
