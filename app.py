@@ -121,7 +121,7 @@ features_cols = features.columns
 # Juntar resultado
 resultados = pd.DataFrame({
     'ID candidato': enrollee_ids.values,
-    'Probabilidade': str(probs*100) + '%'
+    'Probabilidade': probs
 })
 
 st.title("Classificador Binário")
@@ -254,7 +254,7 @@ elif menu == "Busque um candidato por seu ID":
         filt = resultados[resultados['ID candidato'] == int(id_input)]
         if not filt.empty:
             prob2 = filt.iloc[0]['Probabilidade']
-            st.write(f"A probabilidade do candidato de ID {id_input} estar em busca de um novo emprego é: {prob2}%")
+            st.write(f"A probabilidade do candidato de ID {id_input} estar em busca de um novo emprego é: {prob2*100:.0f}%")
         else:
             st.error("ID não encontrado nos resultados.")
 
