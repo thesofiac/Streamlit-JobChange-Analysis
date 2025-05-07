@@ -311,6 +311,8 @@ if menu == "Entenda os dados":
 
 
     with col4:
+        st.markdown("<br><br><br><br><br><br>", unsafe_allow_html=True)
+        
         st.markdown("<h5>E candidatos <span style='color:#E07A5F;'>sem experiência prévia</span> relevante, procuram por um emprego <span style='color:#E07A5F;'><b>com mais frequência</b></span></h5>", unsafe_allow_html=True)
         
         st.markdown("<br><br><br><br><br><br>", unsafe_allow_html=True)
