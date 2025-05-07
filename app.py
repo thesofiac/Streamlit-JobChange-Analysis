@@ -216,7 +216,7 @@ if menu == "Entenda os dados":
     col1, col2 = st.columns([1, 1])
 
     with col1:
-        st.markdown("<h3>Cerca de <span style='color:#E07A5F;'>25%</span> dos candidatos <span style='color:#E07A5F;'>estão em busca de um novo emprego</span></h3>", unsafe_allow_html=True)
+        st.markdown("<h3>Cerca de \n <h1>25%</h1> \n dos candidatos <span style='color:#E07A5F;'>estão em busca de um novo emprego</span></h3>", unsafe_allow_html=True)    
 
     with col2:
         st.markdown("<h3>As intenções dos candidatos <span style='color:#E07A5F;'não</span> são afetadas por:</h3>", unsafe_allow_html=True)
