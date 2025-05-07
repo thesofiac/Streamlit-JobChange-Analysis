@@ -220,10 +220,10 @@ if menu == "Entenda os dados":
     col1, col2 = st.columns([1, 1])
 
     with col1:
-        st.markdown("<h5>Cerca de <span style='color:#E07A5F;'>25%</span> dos candidatos <span style='color:#E07A5F;'><b>estão em busca de um novo emprego</b></span></h5>", unsafe_allow_html=True)
+        st.markdown("<h5>Cerca de <span style='color:#E07A5F;'>25%</span> <br> dos candidatos <span style='color:#E07A5F;'><b>estão <br> em busca de um novo emprego</b></span></h5>", unsafe_allow_html=True)
 
     with col2:
-        st.markdown("<h5>As intenções dos candidatos <span style='color:#E07A5F;'><b>não</b></span> são afetadas pelo seu <span style='color:#E07A5F;'>gênero</span>, <span style='color:#E07A5F;'>área de formação</span> e <span style='color:#E07A5F;'>horas de treinamento</span></h5>", unsafe_allow_html=True)
+        st.markdown("<h5>As intenções dos candidatos <br><span style='color:#E07A5F;'><b>não</b></span> são afetadas pelo seu <span style='color:#E07A5F;'>gênero</span>, <span style='color:#E07A5F;'>área de formação</span> e <span style='color:#E07A5F;'>horas de treinamento</span></h5>", unsafe_allow_html=True)
 
 
     col3, col4 = st.columns([1.5, 1])
@@ -311,15 +311,15 @@ if menu == "Entenda os dados":
 
 
     with col4:
-        st.markdown("<br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+        st.markdown("<br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
         
         st.markdown("<h5>E candidatos <span style='color:#E07A5F;'>sem experiência prévia</span> relevante, procuram por um emprego <span style='color:#E07A5F;'><b>com mais frequência</b></span></h5>", unsafe_allow_html=True)
         
-        st.markdown("<br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+        st.markdown("<br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
         
         st.markdown("<h5>E candidatos que <span style='color:#E07A5F;'>estudaram <br> em tempo integral</span>, procuram por um emprego <span style='color:#E07A5F;'><b>com mais frequência</b></span></h5>", unsafe_allow_html=True)
 
-        st.markdown("<br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+        st.markdown("<br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
         
         st.markdown("<h5>E o <span style='color:#E07A5F;'>tipo e tamanho</span> <br> da empresa, em <span style='color:#E07A5F;'><b>pouco influencia</b></span> <br> a quantidade de candidatos a procura de emprego</h5>", unsafe_allow_html=True)
 
