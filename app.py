@@ -315,7 +315,7 @@ if menu == "Entenda os dados":
         fig.tight_layout()
     
         for i, val in enumerate(y):
-            ax.text(x[i], val, f'{val:.2f}', ha='center', va='bottom')
+            ax.text(x[i], val, f'{val:.0f}', ha='center', va='bottom')
     
         st.pyplot(fig)
 
@@ -324,15 +324,15 @@ if menu == "Entenda os dados":
     with col4:
         st.markdown("<br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
         
-        st.markdown("<h5>E candidatos <span style='color:#E07A5F;'>sem experiência prévia</span> relevante, procuram por um emprego <span style='color:#E07A5F;'><b>com mais frequência</b></span></h5>", unsafe_allow_html=True)
+        st.markdown("<h5>E candidatos <span style='color:#E07A5F;'>sem experiência prévia</span> relevante, procuram por <br> um emprego com <span style='color:#E07A5F;'><b>mais frequência</b></span></h5>", unsafe_allow_html=True)
         
-        st.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+        st.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
         
-        st.markdown("<h5>E candidatos que <span style='color:#E07A5F;'>estudaram <br> em tempo integral</span>, procuram por um emprego <span style='color:#E07A5F;'><b>com mais frequência</b></span></h5>", unsafe_allow_html=True)
+        st.markdown("<h5>E candidatos que <span style='color:#E07A5F;'>estudaram <br> em tempo integral</span>, também</h5>", unsafe_allow_html=True)
 
         st.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
         
-        st.markdown("<h5>E o <span style='color:#E07A5F;'>tipo e tamanho</span> <br> da empresa, em <span style='color:#E07A5F;'><b>pouco influencia</b></span> <br> a quantidade de candidatos a procura de emprego</h5>", unsafe_allow_html=True)
+        st.markdown("<h5>Mas o <span style='color:#E07A5F;'>tipo e tamanho</span> da empresa, <br> em <span style='color:#E07A5F;'><b>pouco influencia</b></span> <br> a quantidade de <br> candidatos a procura de emprego</h5>", unsafe_allow_html=True)
 
 elif menu == "Preveja se um candidato está em busca de emprego":
     st.subheader("Adicione as informações do candidato e da empresa")
