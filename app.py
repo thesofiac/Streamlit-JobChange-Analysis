@@ -211,12 +211,16 @@ company_size_options = list(dic_company_size.keys())
 
 if menu == "Entenda os dados":
     st.subheader("Entenda os dados")
-    #st.title("As intenções dos candidatos")
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
 
     st.markdown("<div style='text-align: justify'><h5>Os dados utilizados são referentes à intenção de profissionais da área de dados em trocar de emprego. Para que seja determinada a probabilidade do profissional estar interessado em mudar de emprego, foram analisados dados de gênero, formação e experiência profissional, assim como dados das vagas que ocupavam no momento da coleta dos dados.</h5></div>", unsafe_allow_html=True)
 
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
+    
     st.markdown("<div style='text-align: justify'><h5>A partir disso, foi possível determinar um modelo de classificação binária, que mostrou desempenho de XXX em acurácia para o conjunto geral dos dados. Também não foi identificado overfitting no modelo escolhido. Para saber mais sobre a escolha do modelo e seu desempenho, acesse a página XXX</h5></div>", unsafe_allow_html=True)
 
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
+    
     col1, col2 = st.columns([1, 1])
 
     with col1:
@@ -229,7 +233,7 @@ if menu == "Entenda os dados":
     col3, col4 = st.columns([1.5, 1])
 
     with col3:
-        st.markdown("<h5>Candidatos que <span style='color:#E07A5F;'>saíram do seu <br> último emprego há mais tempo</span>, têm <br> <span style='color:#E07A5F;'><b>menor chance</b></span> de trocar de emprego</h5>", unsafe_allow_html=True)
+        st.markdown("<h5>Candidatos que <span style='color:#E07A5F;'>saíram do <br> seu último emprego há mais tempo</span>, <br> têm <span style='color:#E07A5F;'><b>menor chance</b></span> de trocar de emprego</h5>", unsafe_allow_html=True)
 
         # Dados
         df1 = pd.DataFrame({
@@ -255,6 +259,8 @@ if menu == "Entenda os dados":
 
         st.pyplot(fig)
 
+        st.markdown("<br><br><br>", unsafe_allow_html=True)
+        
         st.markdown("<h5>Os candidatos <span style='color:#E07A5F;'>graduados</span> buscam <br> por novos empregos com <span style='color:#E07A5F;'><b>mais frequência</b></span></h5>", unsafe_allow_html=True)
 
         # Bloco 2: Escolaridade
@@ -285,7 +291,8 @@ if menu == "Entenda os dados":
     
         # Mostrar no Streamlit
         st.pyplot(fig)
-   
+
+        st.markdown("<br><br><br>", unsafe_allow_html=True)
 
         st.markdown("<h5>Quanto <span style='color:#E07A5F;'>maior o IDH</span> da <br> cidade em que se localiza a empresa, <br> <span style='color:#E07A5F;'><b>menos candidatos</b></span> buscam por novos empregos</h5>", unsafe_allow_html=True)
         
@@ -311,15 +318,15 @@ if menu == "Entenda os dados":
 
 
     with col4:
-        st.markdown("<br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+        st.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
         
         st.markdown("<h5>E candidatos <span style='color:#E07A5F;'>sem experiência prévia</span> relevante, procuram por um emprego <span style='color:#E07A5F;'><b>com mais frequência</b></span></h5>", unsafe_allow_html=True)
         
-        st.markdown("<br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+        st.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
         
         st.markdown("<h5>E candidatos que <span style='color:#E07A5F;'>estudaram <br> em tempo integral</span>, procuram por um emprego <span style='color:#E07A5F;'><b>com mais frequência</b></span></h5>", unsafe_allow_html=True)
 
-        st.markdown("<br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+        st.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
         
         st.markdown("<h5>E o <span style='color:#E07A5F;'>tipo e tamanho</span> <br> da empresa, em <span style='color:#E07A5F;'><b>pouco influencia</b></span> <br> a quantidade de candidatos a procura de emprego</h5>", unsafe_allow_html=True)
 
