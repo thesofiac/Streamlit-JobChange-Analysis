@@ -246,7 +246,7 @@ if menu == "Entenda os dados":
         ax.plot(df1['x'], df1['y'], linestyle='-', marker='o', color='#f15050ff')
         ax.set_xlabel('Anos desde o último emprego')
         ax.set_ylabel('Porcentagem de candidatos \n em busca de empregos')
-        ax.set_ylim(0, 40)
+        ax.set_ylim(0, 35)
         ax.set_yticks([])
         ax.grid(False)
         fig.tight_layout()
@@ -278,8 +278,8 @@ if menu == "Entenda os dados":
         # Adicionar nomes no eixo X
         ax.set_xticks(y_pos)
         ax.set_xticklabels(x, rotation=15, ha='right')
+        ax.set_ylim(0, 30)
         ax.set_ylabel('Porcentagem de candidatos\n em busca de empregos')
-        ax.set_yticks([])  # remover escala Y
         ax.grid(False)
     
         # Mostrar valores acima das barras
