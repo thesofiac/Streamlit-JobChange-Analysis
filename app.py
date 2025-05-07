@@ -244,7 +244,7 @@ if menu == "Entenda os dados":
         # Adicionar os valores acima de cada ponto
         for i in range(len(df1)):
             ax.annotate(f"{df1['y'][i]:.0f}"
-                    (df1['x'][i] + 0.1, df1['y'][i] + 0.1),
+                    (df1['x'][i], df1['y'][i]),
                     textcoords="offset points",
                     xytext=(0, 8),
                     ha='center', color='#444')
