@@ -211,15 +211,15 @@ company_size_options = list(dic_company_size.keys())
 
 if menu == "Entenda os dados":
     st.subheader("Entenda os dados")
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
 
     st.markdown("<div style='text-align: justify'><h5>Os dados utilizados são referentes à intenção de profissionais da área de dados em trocar de emprego. Para que seja determinada a probabilidade do profissional estar interessado em mudar de emprego, foram analisados dados de gênero, formação e experiência profissional, assim como dados das vagas que ocupavam no momento da coleta dos dados.</h5></div>", unsafe_allow_html=True)
 
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     
     st.markdown("<div style='text-align: justify'><h5>A partir disso, foi possível determinar um modelo de classificação binária, que mostrou desempenho de XXX em acurácia para o conjunto geral dos dados. Também não foi identificado overfitting no modelo escolhido. Para saber mais sobre a escolha do modelo e seu desempenho, acesse a página XXX</h5></div>", unsafe_allow_html=True)
 
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     
     col1, col2 = st.columns([1, 1])
 
@@ -229,7 +229,8 @@ if menu == "Entenda os dados":
     with col2:
         st.markdown("<h5>As intenções dos candidatos <br><span style='color:#E07A5F;'><b>não</b></span> são afetadas pelo seu <span style='color:#E07A5F;'>gênero</span>, <br><span style='color:#E07A5F;'>área de formação</span> e <span style='color:#E07A5F;'>horas de treinamento</span></h5>", unsafe_allow_html=True)
 
-
+    st.markdown("<br>", unsafe_allow_html=True)
+    
     col3, col4 = st.columns([1.5, 1])
 
     with col3:
@@ -241,10 +242,11 @@ if menu == "Entenda os dados":
             'y' : [30.1387, 26.4303, 24.1379, 22.5586, 22.1574, 18.2371]
             })
 
-        fig, ax = fig, ax = plt.subplots(figsize=(8, 5), dpi=300)
+        fig, ax = fig, ax = plt.subplots(figsize=(6, 3.75), dpi=300)
         ax.plot(df1['x'], df1['y'], linestyle='-', marker='o', color='#f15050ff')
         ax.set_xlabel('Anos desde o último emprego')
         ax.set_ylabel('Porcentagem de candidatos \n em busca de empregos')
+        ax.set_ylim(0, 40)
         ax.set_yticks([])
         ax.grid(False)
         fig.tight_layout()
@@ -270,7 +272,7 @@ if menu == "Entenda os dados":
         y_pos = np.arange(len(x))
     
         # Criar figura e eixo
-        fig, ax = plt.subplots(figsize=(8, 5), dpi=300)
+        fig, ax = plt.subplots(figsize=(6, 3.75), dpi=300)
         bars = ax.bar(y_pos, y, color=cores)
     
         # Adicionar nomes no eixo X
@@ -301,7 +303,7 @@ if menu == "Entenda os dados":
         y = [58.7, 48.7, 16.5]
     
         # Plot
-        fig, ax = plt.subplots(figsize=(8, 5), dpi=300)
+        fig, ax = plt.subplots(figsize=(6, 3.75), dpi=300)
         ax.plot(x, y, marker='o', linewidth=2, color='#f15050ff')
         ax.fill_between(x, y, color='#f9a3a3', alpha=0.3)
         ax.set_ylim(0, 70)  # Eixo Y vai de 0 a 100
@@ -318,7 +320,7 @@ if menu == "Entenda os dados":
 
 
     with col4:
-        st.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
+        st.markdown("<br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
         
         st.markdown("<h5>E candidatos <span style='color:#E07A5F;'>sem experiência prévia</span> relevante, procuram por um emprego <span style='color:#E07A5F;'><b>com mais frequência</b></span></h5>", unsafe_allow_html=True)
         
