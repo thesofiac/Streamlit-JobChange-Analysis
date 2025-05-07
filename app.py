@@ -332,7 +332,7 @@ if menu == "Entenda os dados":
 
         st.markdown("<br><br><br><br><br><br><br><br><br><br><br><br><br><br>", unsafe_allow_html=True)
         
-        st.markdown("<h5>Mas o <span style='color:#E07A5F;'>tipo e tamanho</span> da empresa, <br> em <span style='color:#E07A5F;'><b>pouco influencia</b></span> <br> a quantidade de <br> candidatos a procura de emprego</h5>", unsafe_allow_html=True)
+        st.markdown("<h5>Mas o <span style='color:#E07A5F;'>tipo e tamanho</span> da <br>empresa, em <span style='color:#E07A5F;'><b>pouco influencia</b></span><br> a busca de empregos</h5>", unsafe_allow_html=True)
 
 elif menu == "Preveja se um candidato está em busca de emprego":
     st.subheader("Adicione as informações do candidato e da empresa")
