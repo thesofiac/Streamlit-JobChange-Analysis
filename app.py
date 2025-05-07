@@ -133,7 +133,8 @@ menu = st.sidebar.selectbox("Escolha uma opção", [
     "Entenda os dados",
     "Preveja se um candidato está em busca de emprego",
     "Busque um candidato por seu ID",
-    "Veja quais são os candidatos mais prováveis a mudar de emprego"
+    "Veja quais são os candidatos mais prováveis a mudar de emprego",
+    "Entenda a escolha do modelo"
 ])
 
 dic_gender = {
@@ -335,7 +336,7 @@ if menu == "Entenda os dados":
         st.markdown("<h5>Já o <span style='color:#E07A5F;'>tipo e tamanho</span><br> da empresa, em <span style='color:#E07A5F;'><b>pouco <br> influencia</b></span> a busca de empregos</h5>", unsafe_allow_html=True)
 
 elif menu == "Preveja se um candidato está em busca de emprego":
-    st.subheader("Adicione as informações do candidato e da empresa")
+    st.subheader("Preveja se um candidato está em busca de emprego")
 
     f1 = st.selectbox("Gênero", gender_options)
     f2 = st.selectbox("Escolaridade", scholarity_options)
@@ -372,7 +373,7 @@ elif menu == "Preveja se um candidato está em busca de emprego":
         st.write(f"A probabilidade do candidato estar em busca de um novo emprego é: {prob1*100:.0f}%")
 
 elif menu == "Busque um candidato por seu ID":
-    st.subheader("Buscar dados por ID")
+    st.subheader("Busque um candidato por seu ID")
     id_input = st.text_input("Digite o ID (de 1 a 33379)")
 
     if st.button("Buscar"):
@@ -383,8 +384,8 @@ elif menu == "Busque um candidato por seu ID":
         else:
             st.error("ID não encontrado nos resultados.")
 
-elif menu == "Veja quais são os candidatos mais prováveis a mudar de emprego":
-    st.subheader("Os candidatos mais e menos prováveis de mudar de emprego")
+elif menu == "Veja quais são os candidatos mais e menos prováveis a mudar de emprego":
+    st.subheader("Veja quais são os candidatos mais e menos prováveis a mudar de emprego")
 
     # Criação dos DataFrames
     top_10 = resultados.nlargest(10, 'Probabilidade')[['ID candidato', 'Probabilidade']]
@@ -400,3 +401,4 @@ elif menu == "Veja quais são os candidatos mais prováveis a mudar de emprego":
     st.write("Os candidatos menos prováveis")
     st.dataframe(bottom_10[['ID candidato', 'Probabilidade (%)']].reset_index(drop=True))
 
+elif menu == "Entenda a escolha do modelo":
