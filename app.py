@@ -279,6 +279,7 @@ if menu == "Entenda os dados":
         ax.set_xticks(y_pos)
         ax.set_xticklabels(x, rotation=15, ha='right')
         ax.set_ylim(0, 30)
+        ax.set_yticks([])
         ax.set_ylabel('Porcentagem de candidatos\n em busca de empregos')
         ax.grid(False)
     
@@ -306,7 +307,8 @@ if menu == "Entenda os dados":
         fig, ax = plt.subplots(figsize=(6, 3.75), dpi=300)
         ax.plot(x, y, marker='o', linewidth=2, color='#f15050ff')
         ax.fill_between(x, y, color='#f9a3a3', alpha=0.3)
-        ax.set_ylim(0, 70)  # Eixo Y vai de 0 a 100
+        ax.set_ylim(0, 70)
+        ax.set_yticks([])
         ax.set_xlabel('IDH da cidade')
         ax.set_ylabel('Porcentagem de candidatos\n em busca de empregos')
         ax.grid(False)
