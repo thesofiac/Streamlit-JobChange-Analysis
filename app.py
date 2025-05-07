@@ -217,10 +217,9 @@ if menu == "Entenda os dados":
 
     st.markdown("<h3>Cerca de</h3><h1>25%</h1><h3>dos candidatos <span style='color:#E07A5F;'>estão em busca de um novo emprego</span></h3>", unsafe_allow_html=True)
 
-    with col2:
-        st.markdown("<h3>As intenções dos candidatos <span style='color:#E07A5F;'não</span> são afetadas por:</h3>", unsafe_allow_html=True)
+    st.markdown("<h3>As intenções dos candidatos <span style='color:#E07A5F;'não</span> são afetadas por:</h3>", unsafe_allow_html=True)
     st.markdown("- Gênero\n- Área de formação\n- Horas de treinamento")
-
+    
     st.markdown("<h3>E candidatos <span style='color:#E07A5F;'>sem experiência prévia</span> relevante, procuram por um emprego **<span style='color:#E07A5F;'com mais frequência</span>**</h3>", unsafe_allow_html=True)
     
     st.markdown("<h3>Candidatos que saíram de seus empregos há mais tempo têm menor chance de estarem procurando por um novo emprego</h3>", unsafe_allow_html=True)
