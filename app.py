@@ -241,7 +241,7 @@ if menu == "Entenda os dados":
             'y' : [30.1387, 26.4303, 24.1379, 22.5586, 22.1574, 18.2371]
             })
 
-        fig, ax = fig, ax = plt.subplots(figsize=(4, 2.5), dpi=300)
+        fig, ax = fig, ax = plt.subplots(figsize=(8, 5), dpi=300)
         ax.plot(df1['x'], df1['y'], linestyle='-', marker='o', color='#f15050ff')
         ax.set_xlabel('Anos desde o último emprego')
         ax.set_ylabel('Porcentagem de candidatos \n em busca de empregos')
