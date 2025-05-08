@@ -127,7 +127,7 @@ resultados = pd.DataFrame({
 })
 
 st.set_page_config(layout="wide")
-st.title("Classificador Binário")
+st.title("Prevendo funcionários a procura de um novo emprego")
 
 menu = st.sidebar.selectbox("Escolha uma opção", [
     "Entenda os dados",
