@@ -409,29 +409,30 @@ elif menu == "Entenda a escolha do modelo":
     """
     <div style='text-align: justify;'>
         <h5>
-        Neste projeto, temos por objetivo determinar se um determinado candidato a uma vaga de cientista de dados será propenso a trocar de emprego após realizar o treinamento oferecido pela empresa ou não. Como é do interesse das empresas evitar a contratação de candidatos que as deixarão após o treinamento, podemos tratar esse problema como um caso de <b>Classificação Binária</b>. Ou seja, um caso em que o <i>target</i> é binário: False (não deixará a empresa) ou True (deixará a empresa).<br><br>
+            Neste projeto, temos por objetivo determinar se um determinado candidato a uma vaga de cientista de dados será propenso a trocar de emprego após realizar o treinamento oferecido pela empresa ou não. Como é do interesse das empresas evitar a contratação de candidatos que as deixarão após o treinamento, podemos tratar esse problema como um caso de <b>Classificação Binária</b>. Ou seja, um caso em que o <i>target</i> é binário: False (não deixará a empresa) ou True (deixará a empresa).<br><br>
 
-        Para selecionar o melhor modelo e a metodologia a serem aplicados aos dados, inicialmente foram avaliadas a presença de valores nulos, outliers e erros de grafia. Os valores nulos foram tratados por meio da substituição pela média, mediana ou moda, a depender do tipo e da distribuição das variáveis.<br><br>
+            Para selecionar o melhor modelo e a metodologia a serem aplicados aos dados, inicialmente foram avaliadas a presença de valores nulos, outliers e erros de grafia. Os valores nulos foram tratados por meio da substituição pela média, mediana ou moda, a depender do tipo e da distribuição das variáveis.<br><br>
 
-        Outliers foram considerados como valores numéricos acima de 1 amplitude interquartílica do terceiro quartil ou abaixo de 1 amplitude interquartílica do primeiro quartil.<br><br>
+            Outliers foram considerados como valores numéricos acima de 1 amplitude interquartílica do terceiro quartil ou abaixo de 1 amplitude interquartílica do primeiro quartil.<br><br>
 
-        As colunas numéricas nominais foram escaladas utilizando o <i>StandardScaler</i>.<br><br>
+            As colunas numéricas nominais foram escaladas utilizando o <i>StandardScaler</i>.<br><br>
 
-        Como foi identificado um forte desbalanceamento nas classes do <i>target</i> — com aproximadamente 75% de dados False e 25% True — quatro técnicas de balanceamento foram testadas: SMOTE, ADASYN, Random Over-Sampling e Random Under-Sampling.<br><br>
+            Como foi identificado um forte desbalanceamento nas classes do <i>target</i> — com aproximadamente 75% de dados False e 25% True — quatro técnicas de balanceamento foram testadas: SMOTE, ADASYN, Random Over-Sampling e Random Under-Sampling.<br><br>
 
-        Os modelos de classificação avaliados inicialmente foram: <i>LogisticRegression</i>, <i>RandomForestClassifier</i> e <i>XGBClassifier</i>, testados em uma gama de hiperparâmetros definida por meio do <i>GridSearchCV</i>.<br><br>
+            Os modelos de classificação avaliados inicialmente foram: <i>LogisticRegression</i>, <i>RandomForestClassifier</i> e <i>XGBClassifier</i>, testados em uma gama de hiperparâmetros definida por meio do <i>GridSearchCV</i>.<br><br>
 
-        Variáveis constantes foram removidas com base em sua variância, utilizando o <i>VarianceThreshold</i>, e as 10 variáveis mais relevantes foram selecionadas por meio do <i>SelectKBest</i>.<br><br>
+            Variáveis constantes foram removidas com base em sua variância, utilizando o <i>VarianceThreshold</i>, e as 10 variáveis mais relevantes foram selecionadas por meio do <i>SelectKBest</i>.<br><br>
 
-        O <b>recall</b> foi adotado como métrica principal de avaliação dos modelos, pois, de acordo com os objetivos do problema, é mais importante identificar o maior número possível de funcionários propensos a pedir demissão (targets True) do que prever corretamente os casos negativos.<br><br>
+            O <b>recall</b> foi adotado como métrica principal de avaliação dos modelos, pois, de acordo com os objetivos do problema, é mais importante identificar o maior número possível de funcionários propensos a pedir demissão (targets True) do que prever corretamente os casos negativos.<br><br>
 
-        O modelo com melhor desempenho foi o <i>RandomForestClassifier</i> com balanceamento via SMOTE, atingindo recall de 74% no treino e 73% no teste.<br><br>
+            O modelo com melhor desempenho foi o <i>RandomForestClassifier</i> com balanceamento via SMOTE, atingindo recall de 74% no treino e 73% no teste.<br><br>
 
-        Considerando o desbalanceamento original dos dados, esse desempenho foi considerado satisfatório, já que, mesmo com apenas 25% de casos positivos, o modelo conseguiu identificar corretamente 73% deles no conjunto de teste.<br><br>
+            Considerando o desbalanceamento original dos dados, esse desempenho foi considerado satisfatório, já que, mesmo com apenas 25% de casos positivos, o modelo conseguiu identificar corretamente 73% deles no conjunto de teste.<br><br>
 
-        O código utilizado pode ser encontrado no GitHub associado a este link.
+            O código utilizado pode ser encontrado no <a href='https://github.com/seurepositorio' target='_blank'>repositório do GitHub</a>.
         </h5>
     </div>
     """,
     unsafe_allow_html=True
 )
+
