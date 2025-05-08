@@ -218,7 +218,7 @@ if menu == "Entenda os dados":
 
     st.markdown("<br>", unsafe_allow_html=True)
     
-    st.markdown("<div style='text-align: justify'><h5>A partir disso, foi possível determinar um modelo de classificação binária, que mostrou recall de 74% para o conjunto geral dos dados. Também não foi identificado overfitting considerável no modelo escolhido. Para saber mais sobre a escolha do modelo e seu desempenho, acesse a página "Entenda a escolha do modelo"</h5></div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify'><h5>A partir disso, foi possível determinar um modelo de classificação binária, que mostrou recall de 74% para o conjunto geral dos dados. Também não foi identificado overfitting considerável no modelo escolhido. Para saber mais sobre a escolha do modelo e seu desempenho, acesse a página <i>Entenda a escolha do modelo</i></h5></div>", unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
     
