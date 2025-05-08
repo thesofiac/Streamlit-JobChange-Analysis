@@ -214,9 +214,7 @@ if menu == "Entenda os dados":
     st.subheader("Entenda os dados")
     st.markdown("<br>", unsafe_allow_html=True)
 
-    st.markdown("<div style='text-align: justify'><h5>Neste projeto, temos por objetivo determinar se um determinado candidato a uma vaga de cientista de dados será propenso a trocar de emprego após realizar o treinamento oferecido pela empresa ou não. Como é do interesse das empresas evitar a contratação de candidatos que as deixarão após o treinamento, podemos tratar esse problema como um caso de Classificação Binária. Ou seja, um caso em que o <i>target</i> é classificatório e binário do tipo False (não deixará a empresa) e True (deixará a empresa).<br>
-    
-                Para que seja determinada a probabilidade do candidato estar interessado em mudar de emprego, foram analisados dados de gênero, formação e experiência profissional, assim como dados das vagas e empresas que estes profissionais ocupavam no momento da coleta de dados.</h5></div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify'><h5>Neste projeto, temos por objetivo determinar se um candidato a uma vaga de cientista de dados será propenso a trocar de emprego após realizar o treinamento oferecido pela empresa ou não. Como é do interesse das empresas evitar a contratação de candidatos que as deixarão após o treinamento, podemos tratar esse problema como um caso de Classificação Binária. Ou seja, um caso em que o <i>target</i> é classificatório e binário do tipo False (não deixará a empresa) e True (deixará a empresa). Para que seja determinada a probabilidade do candidato estar interessado em mudar de emprego, foram analisados dados de gênero, formação e experiência profissional, assim como dados das vagas e empresas que estes profissionais ocupavam no momento da coleta de dados.</h5></div>", unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
     
@@ -409,7 +407,7 @@ elif menu == "Entenda a escolha do modelo":
     """
     <div style='text-align: justify;'>
         <h5>
-            Neste projeto, temos por objetivo determinar se um determinado candidato a uma vaga de cientista de dados será propenso a trocar de emprego após realizar o treinamento oferecido pela empresa ou não. Como é do interesse das empresas evitar a contratação de candidatos que as deixarão após o treinamento, podemos tratar esse problema como um caso de <b>Classificação Binária</b>. Ou seja, um caso em que o <i>target</i> é binário: False (não deixará a empresa) ou True (deixará a empresa).<br><br>
+            Neste projeto, temos por objetivo determinar se um candidato a uma vaga de cientista de dados será propenso a trocar de emprego após realizar o treinamento oferecido pela empresa ou não. Como é do interesse das empresas evitar a contratação de candidatos que as deixarão após o treinamento, podemos tratar esse problema como um caso de <b>Classificação Binária</b>. Ou seja, um caso em que o <i>target</i> é binário: False (não deixará a empresa) ou True (deixará a empresa).<br><br>
 
             Para selecionar o melhor modelo e a metodologia a serem aplicados aos dados, inicialmente foram avaliadas a presença de valores nulos, outliers e erros de grafia. Os valores nulos foram tratados por meio da substituição pela média, mediana ou moda, a depender do tipo e da distribuição das variáveis.<br><br>
 
